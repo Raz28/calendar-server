@@ -16,6 +16,11 @@ class EventController(@Autowired private val eventService: EventService) {
         return eventService.getAll()
     }
 
+    @GetMapping("/mock")
+    fun getMock(): MutableList<Event> {
+        return eventService.getMockAllEvents()
+    }
+
     @GetMapping("/all")
     fun getAll(@RequestParam userId: ObjectId): List<Event> {
         return eventService.getAllEvents(userId)

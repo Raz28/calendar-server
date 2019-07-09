@@ -5,6 +5,7 @@ import com.gsv28rus.calendar.utils.ObjectIdSerializer
 import org.bson.types.ObjectId
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
+import java.time.Instant
 
 @Document(collection = "events")
 data class Event(
@@ -21,7 +22,9 @@ data class Event(
 
         var location: String?,
 
-        val period: PeriodEvent?,
+        var startDate: Instant?,
+
+        var endDate: Instant?,
 
         var who: String?,
 
