@@ -41,14 +41,14 @@ class UserWebSecurityConfig
     @Throws(Exception::class)
     override fun configure(httpSecurity: HttpSecurity) {
 
-        httpSecurity.antMatcher("/users/**")
+        httpSecurity.antMatcher("/**")
                 .cors()
                 .and()
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
-                .antMatchers("/users/signIn").permitAll()
-//                .anyRequest().authenticated()
+//                .antMatchers("/users/signIn").permitAll()
+                .anyRequest().authenticated()
                 .anyRequest().permitAll()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

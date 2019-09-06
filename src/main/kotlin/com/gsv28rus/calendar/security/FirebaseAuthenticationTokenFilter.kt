@@ -13,7 +13,7 @@ import javax.servlet.ServletException
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
-class FirebaseAuthenticationTokenFilter(private val firebaseAuth: FirebaseAuth) : AbstractAuthenticationProcessingFilter("/users/**") {
+class FirebaseAuthenticationTokenFilter(private val firebaseAuth: FirebaseAuth) : AbstractAuthenticationProcessingFilter("/**") {
 
     override fun attemptAuthentication(request: HttpServletRequest, response: HttpServletResponse): Authentication {
         val authToken = request.getHeader(TOKEN_HEADER)

@@ -1,11 +1,14 @@
 package com.gsv28rus.calendar.model
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 import com.fasterxml.jackson.databind.annotation.JsonSerialize
 import com.gsv28rus.calendar.utils.ObjectIdSerializer
+import com.gsv28rus.calendar.utils.ZoneDateTimeDeserializer
+import com.gsv28rus.calendar.utils.ZoneDateTimeSerializer
 import org.bson.types.ObjectId
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
-import java.time.Instant
+import java.time.ZonedDateTime
 
 @Document(collection = "events")
 data class Event(
@@ -22,9 +25,13 @@ data class Event(
 
         var location: String?,
 
-        var startDate: Instant?,
+        @JsonSerialize(using = ZoneDateTimeSerializer::class)
+        @JsonDeserialize(using = ZoneDateTimeDeserializer::class)
+        var startDate: ZonedDateTime?,
 
-        var endDate: Instant?,
+        @JsonSerialize(using = ZoneDateTimeSerializer::class)
+        @JsonDeserialize(using = ZoneDateTimeDeserializer::class)
+        var endDate: ZonedDateTime?,
 
         var who: String?,
 

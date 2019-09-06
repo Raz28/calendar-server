@@ -39,7 +39,7 @@ class FirebaseUserPrincipal(var user: User?) : UserDetails {
     }
 
     override fun getUsername(): String? {
-        return username
+        return user?.id.toString()
     }
 
     fun setUsername(username: String) {
